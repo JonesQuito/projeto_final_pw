@@ -14,6 +14,7 @@ import br.com.labpw.model.disciplina.LogicaDisciplina;
 public class ServletDisciplina extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
+	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 	throws IOException, ServletException{
 		
@@ -22,7 +23,7 @@ public class ServletDisciplina extends HttpServlet{
 		try{
 			LogicaDisciplina disciplinaLogica = (LogicaDisciplina)Class.forName(classe).newInstance();
 			String pagina = disciplinaLogica.executa(request, response);
-			
+					
 			request.getRequestDispatcher(pagina).forward(request, response);
 			
 		}catch(Exception e){

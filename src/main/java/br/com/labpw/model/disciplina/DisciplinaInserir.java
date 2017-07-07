@@ -18,14 +18,21 @@ public class DisciplinaInserir implements LogicaDisciplina {
 		String nome = request.getParameter("nome");
 		String descricao = request.getParameter("descricao");
 		String duracaoStr = request.getParameter("duracao");
-
-		if (codigoStr.isEmpty() || nome.isEmpty() || duracaoStr.isEmpty()) {
-			request.setAttribute("erro", "Código e duração são de preencimento obrigatório");
+		
+		if(codigoStr==null || nome==null || duracaoStr==null){
+			request.setAttribute("erro", "Parâmetros obrigatórios não foram passados na requisição");
 			request.setAttribute("nextPage", "disciplina_cadastrar.jsp");
 			request.setAttribute("messageLink", "Tentar Novamente...");
 			return "erroPage.jsp";
 		}
 
+		if (codigoStr.isEmpty() || nome.isEmpty() || duracaoStr.isEmpty()) {
+			request.setAttribute("erro", "Código, Nome e duração são de preencimento obrigatório");
+			request.setAttribute("nextPage", "disciplina_cadastrar.jsp");
+			request.setAttribute("messageLink", "Tentar Novamente...");
+			return "erroPage.jsp";
+		}
+		
 		try {
 			int codigo = Integer.parseInt(codigoStr);
 			int duracao = Integer.parseInt(duracaoStr);
@@ -44,7 +51,7 @@ public class DisciplinaInserir implements LogicaDisciplina {
 			request.setAttribute("messageLink", "Tentar Novamente...");
 			return "erroPage.jsp";
 		} catch (SQLException e) {
-			request.setAttribute("erro", "Não foi possível inserir a disciplina: " + e.getMessage());
+			request.setAttribute("erro", "Não foi possível inserir a disciplina: " + e);
 			request.setAttribute("nextPage", "disciplina_cadastrar.jsp");
 			request.setAttribute("messageLink", "Tentar Novamente...");
 			return "erroPage.jsp";

@@ -12,6 +12,7 @@
 			window.location.href='#conteudo';
 		});
 	</script>
+	
 
 </head>
 
@@ -50,7 +51,7 @@
 							</div>
 							<div class="panel-body">
 
-								<form class="form-horizontal" method="post" action="servletdisciplina?logica=DisciplinaInserir">
+								<form class="form-horizontal" id="form1" method="post" action="servletdisciplina?logica=DisciplinaInserir">
 
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label">Código</label>
@@ -116,7 +117,6 @@
 		<!-- div container -->
 	</div>
 	<!-- div wrapper -->
-
 
 </body>
 </html>
