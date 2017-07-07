@@ -92,8 +92,9 @@
 											<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1"
 												for="cadastrarNascimento">Nascimento</label>
 											<div class="col-lg-12 col-md-3 col-sm-5 col-xs-12">
-												<input class="form-control" name="dataNascimento" readonly="true" 	id="cadastrarNascimento" 
-												type="text" id="example-date-input" value='<fmt:formatDate value="${aluno.dataNascimento.time}"/>'>
+												<input class="form-control" name="dataNascimento" readonly="true" id="cadastrarNascimento" 
+												type="text" id="example-date-input" pattern="yyyy/mm/dd" value='<fmt:formatDate value="${aluno.dataNascimento.time}"/>'/>
+												
 											</div>
 										</div>
 
