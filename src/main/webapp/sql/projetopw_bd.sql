@@ -34,6 +34,16 @@ create table aluno(
 ) ENGINE = innodb;
 
 select * from aluno;
+
+/* comando para criar a tabela de disciplinas*/
+create table disciplina(
+	CodDisciplina integer(5) auto_increment,
+	Nome varchar(30),
+	Descricao varchar(250),
+	CargaHoraria integer(3),
+	constraint PK_DISCIPLINA primary key(CodDisciplina)
+) ENGINE = innodb;
+
 	
 
 /* comando para criar a tabela de cursos */

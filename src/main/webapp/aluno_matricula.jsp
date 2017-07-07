@@ -1,5 +1,6 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -67,7 +68,7 @@
 
 								<div class="formulario col-lg-5 borda">
 
-									<form class="form-horizontal" id="cadastraAluno" method="post" action="servletaluno?logica=AlunoMatricular&operacao=buscar">
+									<form class="form-horizontal" id="cadastraAluno" method="post" action="servletmatricula?logica=MatriculaRegistrar&operacao=busca">
 										<!-- class="form-horizontal" -->
 
 										<div class="form-group">
@@ -119,7 +120,7 @@
 										<div class="form-group">
 											<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1"></label>
 											<div style="margin: auto;">
-												<button	class="col-lg-8 col-md-4 col-sm-6 col-xs-12 btn btn-primary" type="submit">Buscarrr</button>
+												<button	class="col-lg-8 col-md-4 col-sm-6 col-xs-12 btn btn-primary" type="submit">Buscar</button>
 											</div>
 										</div>
 
@@ -139,15 +140,20 @@
 									style="position: relative; float: right;">
 
 									<div class="form-group">
-										<label for="curso">Selecionar Curso</label> <select
-											class="form-control" name="curso" id="curso">
-											<option>Matemática</option>
-											<option>Português</option>
-											<option>História</option>
+									
+										<label for="curso">Selecionar Disciplina</label> 
+										
+										<select class="form-control" name="curso" id="curso">
+											<option value="">Selecione após selecionar aluno</option>
+											<c:forEach var="disciplina" items="${disciplinas}">
+												<option value="">${disciplina.nome}</option>
+											</c:forEach>
 										</select>
+										
 									</div>
 
-									<hr style="background-color: blue; height: 1px;" />
+									<label for="curso">Alunos matriculados</label> 
+
 
 									<div class="table-responsive borda">
 										<table class="table table-hover" style="padding: 0px;">

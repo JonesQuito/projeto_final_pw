@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.labpw.connection.ConnectionFactory;
 
 public class AlunoPesquisar implements LogicaAluno {
-
+	
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws Exception {
 				
 		String nome = request.getParameter("nome");
