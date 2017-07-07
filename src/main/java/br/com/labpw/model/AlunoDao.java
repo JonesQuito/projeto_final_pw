@@ -52,9 +52,10 @@ public class AlunoDao {
 		try {
 			List<Aluno> alunos = new ArrayList<Aluno>();
 			
-			String sql = "select * from aluno where Nome like ? '%'";
+			String sql = "select * from aluno where Nome like '%' ? '%' or MatrAluno like ? '%'";
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setString(1, nome);
+			stmt.setString(2, nome);
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
