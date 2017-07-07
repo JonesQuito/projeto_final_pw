@@ -12,10 +12,12 @@
 	padding: 10px;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/requisicao.js"></script>
 </head>
 
 <body>
-
+	
 	<div class="wrapper" role="main">
 
 		<div class="container-fluid">
@@ -44,6 +46,7 @@
 					<!-- Div Conteudo -->
 					<div class="conteudo">
 						<hr />
+						<a href="#" onclick="teste()">teste</a>
 
 						<div class="panel panel-default"
 							style="width: 100%; margin: auto;">
@@ -162,8 +165,8 @@
 												<th style="padding: 0px;">Nome</th>
 											</tr>
 											<tr style="padding: 0px;">
-												<td style="padding: 0px;">001</td>
-												<td style="padding: 0px;">Caio Benício Lorenzo Castro</td>
+												<td style="padding: 0px;" id="matricula">001</td>
+												<td style="padding: 0px;" id="nome">Caio Benício Lorenzo Castro</td>
 											</tr>
 											<tr>
 												<td style="padding: 0px;">002</td>
