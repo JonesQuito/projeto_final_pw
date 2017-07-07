@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -48,37 +50,38 @@
 							</div>
 							<div class="panel-body">
 
-								<form class="form-horizontal">
+								<form class="form-horizontal" method="post" action="servletdisciplina?logica=DisciplinaInserir">
 
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label">Código</label>
 										<div class="col-lg-2 col-md-3 col-sm-5 col-xs-12">
-											<input type="text" class="form-control" id="cadastrarCodigo"
-											placeholder="Código">
+											
+											<input type="text" class="form-control" id="cadastrarCodigo" name="codigo"
+											placeholder="Código" maxlength="5" required="true">
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label">Nome</label>
 										<div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
-											<input type="text" class="form-control" id="cadastrarNome"
-											placeholder="Nome">
+											<input type="text" class="form-control" id="cadastrarNome" name="nome"
+											placeholder="Nome" maxlength="30">
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label">Carga Horária</label>
+										<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+											<input type="text" class="form-control" id="cadastrarDuracao" name="duracao"
+											placeholder="Carga Horária" maxlength="3">
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label">Descrição</label>
 										<div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
-											<input type="text" class="form-control" id="cadastrarDescricao"
-											placeholder="Descrição">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label">Carga Horária</label>
-										<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-											<input type="text" class="form-control" id="cadastrarDuracao"
-											placeholder="Carga Horária">
+											<textarea class="form-control" id="cadastrarDescricao" name="descricao"
+											placeholder="Descrição" rows="5" cols="50" maxlength="250"></textarea>
 										</div>
 									</div>
 
