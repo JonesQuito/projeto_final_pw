@@ -13,7 +13,7 @@ create table usuarios(
     primary key (usuario, senha)
 );
 	
-# Alterando a engine da tabela usuarios para innodb
+/* Alterando a engine da tabela usuarios para innodb*/
 alter table usuarios engine = InnoDB;
 
 
@@ -33,7 +33,6 @@ create table aluno(
     constraint PK_ALUNO primary key(MatrAluno)
 ) ENGINE = innodb;
 
-select * from aluno;
 
 /* comando para criar a tabela de disciplinas*/
 create table disciplina(
@@ -42,16 +41,6 @@ create table disciplina(
 	Descricao varchar(250),
 	CargaHoraria integer(3),
 	constraint PK_DISCIPLINA primary key(CodDisciplina)
-) ENGINE = innodb;
-
-	
-
-/* comando para criar a tabela de cursos */
-create table curso(
-	CodCurso varchar(10) not null,
-    Nome varchar(30) not null,
-    Ementa varchar(300),
-    constraint primary key(CodCurso)
 ) ENGINE = innodb;
 
 
@@ -66,10 +55,15 @@ create table matricula(
 ) ENGINE = innodb;
 
 
+/* comando para criar a tabela de cursos */
+create table curso(
+	CodCurso varchar(10) not null,
+    Nome varchar(30) not null,
+    Ementa varchar(300),
+    constraint primary key(CodCurso)
+) ENGINE = innodb;
 
-
-select * from aluno;
-
+/* Inserindo usuários no banco*/
 # Inserindo usuários do sistema 
 insert into usuarios (usuario, senha) values ('hitalo', '123');
 insert into usuarios (usuario, senha) values ('jones', '123');
