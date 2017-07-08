@@ -68,7 +68,7 @@
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label" for="nome">Nome<span style="color: red">*</span></label>
 										<div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
-											<input type="text" class="form-control" id="nome" name="nome" required="true" maxlength="50" value="${nome}"
+											<input type="text" class="form-control" id="nome" name="nome" required="true" maxlength="50" value="${aluno.nome}"
 											placeholder="Nome"">
 										</div>
 									</div>
@@ -76,7 +76,7 @@
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label" for="dataNascimento">Nascimento<span style="color: red">*</span></label>
 										<div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
-											<input class="form-control" id="dataNascimento" name="dataNascimento" type="text" required="true" value="${nascimento}"
+											<input class="form-control" id="dataNascimento" name="dataNascimento" type="text" required="true" value="${aluno.dataNascimento.time}"
 											placeholder="aaaa-mm-dd" id="example-date-input">
 										</div>
 									</div>
@@ -84,7 +84,7 @@
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label" for="cpf">CPF<span style="color: red">*</span></label>
 										<div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
-											<input type="text" class="form-control" id="cpf" required="true" value="${cpf}"
+											<input type="text" class="form-control" id="cpf" required="true" value="${aluno.cpf}"
 											placeholder="000.000.000-00" name="cpf" maxlength="11">
 										</div>
 									</div>
@@ -92,7 +92,7 @@
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label" for="rg">RG</label>
 										<div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
-											<input type="text" class="form-control" id="rg" name="rg" maxlength="15" value="${rg}"
+											<input type="text" class="form-control" id="rg" name="rg" maxlength="15" value="${aluno.rg}"
 											placeholder="00.000.000-0">
 										</div>
 									</div>
@@ -100,7 +100,7 @@
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label" for="nomeMae">Mãe<span style="color: red">*</span></label>
 										<div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
-											<input type="text" class="form-control" id="nomeMae" name="nomeMae" required="true" maxlength="50" value="${mae}"
+											<input type="text" class="form-control" id="nomeMae" name="nomeMae" required="true" maxlength="50" value="${aluno.nomeMae}"
 											placeholder="Nome da mãe">
 										</div>
 									</div>
@@ -108,7 +108,7 @@
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label" for="cep">CEP</label>
 										<div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
-											<input type="text" class="form-control" id="cep" value="${cep}"
+											<input type="text" class="form-control" id="cep" value="${aluno.endereco.cep}"
 											placeholder="00.000-000" name="cep" maxlength="8">
 										</div>
 									</div>
@@ -116,7 +116,7 @@
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label" for="cidade">Cidade<span style="color: red">*</span></label>
 										<div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
-											<input type="text" class="form-control" id="cidade" name="cidade" required="true" maxlength="30" value="${cidade}"
+											<input type="text" class="form-control" id="cidade" name="cidade" required="true" maxlength="30" value="${aluno.endereco.cidade}"
 											placeholder="Cidade" />
 										</div>
 									</div>
@@ -124,7 +124,7 @@
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label" for="bairro">Bairro</label>
 										<div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
-											<input type="text" class="form-control" id="bairro" name="bairro" maxlength="30" value="${bairro}"
+											<input type="text" class="form-control" id="bairro" name="bairro" maxlength="30" value="${aluno.endereco.bairro}"
 											placeholder="Bairro">
 										</div>
 									</div>
@@ -132,7 +132,7 @@
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label" for="logradouro">Logradouro</label>
 										<div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
-											<input type="text" class="form-control" id="logradouro" name="logradouro" maxlength="30" value="${logradouro}"
+											<input type="text" class="form-control" id="logradouro" name="logradouro" maxlength="30" value="${aluno.endereco.logradouro}"
 											placeholder="Logradouro">
 										</div>
 									</div>
@@ -140,7 +140,7 @@
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label" for="numero">Número</label>
 										<div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
-											<input type="text" class="form-control" id="numero" name="numero" maxlength="5" value="${numero}"
+											<input type="text" class="form-control" id="numero" name="numero" maxlength="5" value="${aluno.endereco.numero}"
 											placeholder="Número">
 										</div>
 									</div>
