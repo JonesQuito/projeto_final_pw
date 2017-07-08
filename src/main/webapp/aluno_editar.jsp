@@ -91,7 +91,7 @@
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label" for="cadastrarCPF">CPF</label>
 										<div class="col-lg-4 col-md-3 col-sm-4 col-xs-12">
 											<input type="text" class="form-control" id="cadastrarCPF" name="cpf" value="${aluno.cpf}"
-											placeholder="000.000.000-00" name="cpf" maxlength="14">
+											placeholder="000.000.000-00" name="cpf" maxlength="11">
 										</div>
 									</div>
 
@@ -139,9 +139,7 @@
 									<div class="form-group">
 										<label class="col-lg-2 col-md-2 col-sm-3 col-xs-1 control-label"></label>
 										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-											<a href="servletaluno?logica=AlunoEditar&operacao=alterar">
-												<button class="col-lg-6 col-md-4 col-sm-6 col-xs-12 btn btn-primary" type="submit">Salvar</button>
-											</a>
+											<button class="col-lg-6 col-md-4 col-sm-6 col-xs-12 btn btn-primary" type="submit">Salvar</button>
 										</div>
 									</div>
 
