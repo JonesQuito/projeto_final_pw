@@ -18,19 +18,19 @@
         	href="servletdisciplina?logica=DisciplinaPesquisar" role="button"><span class="glyphicon glyphicon-list"></span> Matricula</a>
         	
         	<form action="servletaluno?logica=AlunoPesquisar" method="post" style=" margin-top: -12px;">
-			<div class="form-group">
-				<div class="col-lg-4 col-md-8 col-sm-8 col-xs-8">
-					<input type="text" class="form-control" id="pesquisar" name="nome" placeholder="Informe um nome ou matrícula a ser pesquisado">
+				<div class="form-group">
+					<div class="col-lg-4 col-md-8 col-sm-8 col-xs-8">
+						<input type="text" class="form-control" id="pesquisar" name="nome" placeholder="Informe um nome ou matrícula a ser pesquisado">
+					</div>
 				</div>
-			</div>
-			<button type="submit" style="font-size: 13pt; font-weight: 700; padding: 4px; width: 5%;"
-				class="col-lg-2 col-md-3 col-sm-4 hidden-xs btn btn-primary"><span class="glyphicon glyphicon-search"></span>
-			</button>
-			<button type="submit" class="col-xs-2 hidden-lg hidden-md hidden-sm btn btn-primary botao-buscar-mobile">
-				<span class="glyphicon glyphicon-search"></span> buscar
-			</button>
+				<button type="submit" style="font-size: 13pt; font-weight: 700; padding: 4px; width: 5%;"
+					class="col-lg-2 col-md-3 col-sm-4 hidden-xs btn btn-primary"><span class="glyphicon glyphicon-search"></span>
+				</button>
+				<button type="submit" class="col-xs-2 hidden-lg hidden-md hidden-sm btn btn-primary botao-buscar-mobile">
+					<span class="glyphicon glyphicon-search"></span> buscar
+				</button>
 
-		</form>
+			</form>
 		</div>
 	</div>
 	<!-- Botões de opções -->
