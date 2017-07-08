@@ -20,30 +20,26 @@ public class AlunoDao {
 		this.connection = connection;
 	}
 
-	public void inserir(Aluno aluno) {
+	public void inserir(Aluno aluno) throws SQLException {
 
 		String sql = "insert into aluno "
 				+ "(Nome, DataNascimento, Rg, Cpf, NomeMae, Cidade, Bairro, Logradouro, Cep, Numero) "
 				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		Date dataNascimento = new Date(aluno.getDataNascimento().getTimeInMillis());
 
-		try {
-			PreparedStatement stmt = this.connection.prepareStatement(sql);
-			stmt.setString(1, aluno.getNome());
-			stmt.setDate(2, dataNascimento);
-			stmt.setString(3, aluno.getRg());
-			stmt.setString(4, aluno.getCpf());
-			stmt.setString(5, aluno.getNomeMae());
-			stmt.setString(6, aluno.getEndereco().getCidade());
-			stmt.setString(7, aluno.getEndereco().getBairro());
-			stmt.setString(8, aluno.getEndereco().getLogradouro());
-			stmt.setString(9, aluno.getEndereco().getCep());
-			stmt.setString(10, aluno.getEndereco().getNumero());
+		PreparedStatement stmt = this.connection.prepareStatement(sql);
+		stmt.setString(1, aluno.getNome());
+		stmt.setDate(2, dataNascimento);
+		stmt.setString(3, aluno.getRg());
+		stmt.setString(4, aluno.getCpf());
+		stmt.setString(5, aluno.getNomeMae());
+		stmt.setString(6, aluno.getEndereco().getCidade());
+		stmt.setString(7, aluno.getEndereco().getBairro());
+		stmt.setString(8, aluno.getEndereco().getLogradouro());
+		stmt.setString(9, aluno.getEndereco().getCep());
+		stmt.setString(10, aluno.getEndereco().getNumero());
 
-			stmt.execute();
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
+		stmt.execute();
 
 	}
 
