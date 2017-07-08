@@ -28,7 +28,7 @@ public class AlunoPesquisar implements LogicaAluno {
 			connection.close();
 			request.setAttribute("lista", lista);
 			
-			return "alunos.jsp";
+			return "aluno_listar.jsp";
 		}
 	}
 
