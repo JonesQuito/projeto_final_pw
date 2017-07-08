@@ -67,7 +67,7 @@
 											<th colspan="2">Ações</th>
 
 										<c:forEach var="aluno" items="${lista}" varStatus="contador">
-											<tr bgcolor="#${contador.count %2 == 0? 'aaee88': 'ffffff' }">
+											<tr bgcolor="#${contador.count %2 == 0? 'eee': 'ffffff' }">
 												<td>${aluno.matricula}</td>
 												<td>${aluno.nome}</td>
 												<td><fmt:formatDate value="${aluno.dataNascimento.time}" pattern="dd/MM/yyyy"/></td>
