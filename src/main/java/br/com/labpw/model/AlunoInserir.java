@@ -1,6 +1,7 @@
 package br.com.labpw.model;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,30 +33,15 @@ public class AlunoInserir implements LogicaAluno {
 		if (NomeStr == null || NomeMaeStr == null || DataNascimentoStr == null) {
 			
 			return "aluno_cadastrar.jsp";
+						
+		} else {
 			
-		} else if (NomeStr.isEmpty() || NomeMaeStr.isEmpty() || DataNascimentoStr.isEmpty() || CpfStr.isEmpty() || CidadeStr.isEmpty()) {
+			//Instancia um aluno e seta um novo endereço como atributo de aluno
+			Aluno aluno = new Aluno();
+			aluno.setEndereco(new Endereco());
 			
-			request.setAttribute("nome", NomeStr);
-			request.setAttribute("mae", NomeMaeStr);
-			request.setAttribute("nascimento", DataNascimentoStr);
-			request.setAttribute("cpf", CpfStr);
-			request.setAttribute("rg", RgStr);
-			request.setAttribute("cep", CepStr);
-			request.setAttribute("cidade", CidadeStr);
-			request.setAttribute("bairro", BairroStr);
-			request.setAttribute("logradouro", LogradouroStr);
-			request.setAttribute("numero", NumeroStr);
-			
-			return "aluno_cadastrar.jsp";
-			
-		} else {	
-
 			try {
-				// Faz a conversão da data de nascimento
-				Date data = new SimpleDateFormat("dd/MM/yyyy").parse(DataNascimentoStr);
-				dataNascimento = Calendar.getInstance();
-				dataNascimento.setTime(data);
-
+				
 				// Instancia um endereço e seta seus atributos
 				Endereco endereco = new Endereco();
 				endereco.setCidade(CidadeStr);
@@ -64,14 +50,18 @@ public class AlunoInserir implements LogicaAluno {
 				endereco.setCep(CepStr);
 				endereco.setNumero(NumeroStr);
 
-				// Instancia um aluno e seta seus atributos
-				Aluno aluno = new Aluno();
+				// Seta os atributos de aluno
 				aluno.setNome(NomeStr);
-				aluno.setNomeMae(NomeMaeStr);
-				aluno.setDataNascimento(dataNascimento);
+				aluno.setNomeMae(NomeMaeStr);	
 				aluno.setRg(RgStr);
 				aluno.setCpf(CpfStr);
 				aluno.setEndereco(endereco);
+				
+				// Faz a conversão da data de nascimento e seta como atributo de aluno
+				Date data = new SimpleDateFormat("dd/MM/yyyy").parse(DataNascimentoStr);
+				dataNascimento = Calendar.getInstance();
+				dataNascimento.setTime(data);
+				aluno.setDataNascimento(dataNascimento);
 				
 				// Solicita uma conexão para a ConnectionFactory
 				Connection connection = new ConnectionFactory().getConnection();
@@ -81,13 +71,25 @@ public class AlunoInserir implements LogicaAluno {
 				dao.inserir(aluno);
 				connection.close();
 				
-
-			} catch (ParseException e) {
-				System.out.println("Erro de conversão de data!!");
-				// return;
+				//captura uma ParseException, se ocorrer e retorna para a página de cadastro
+			} catch (ParseException pe) {
+				request.setAttribute("erro", "Erro de conversão de data!!" + pe);
+				request.setAttribute("nextPage", "aluno_cadastrar.jsp");
+				request.setAttribute("messageLink", "Tentar Novamente...");
+				request.setAttribute("aluno", aluno);
+				return "aluno_cadastrar.jsp";
+				
+				//captura uma SQLException, se ocorrer e retorna para a página de cadastro
+			}catch(SQLException sqle){
+				request.setAttribute("erro", "Erro ao inserir registro no banco: " + sqle);
+				request.setAttribute("nextPage", "aluno_cadastrar.jsp");
+				request.setAttribute("messageLink", "Tentar Novamente...");
+				request.setAttribute("aluno", aluno);
+				return "aluno_cadastrar.jsp";
 			}
 
 		}
+		//Em caso de sucesso no cadastro, a servletaluno é invocada para selecionar e exibir o registro
 		return "servletaluno?logica=AlunoPesquisar";
 	}
 
