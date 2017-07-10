@@ -46,9 +46,9 @@ create table disciplina(
 
 /* comando para criar a tabela de matriculas */
 create table matricula(
-	Aluno integer(10) not null,
-    Curso varchar(10) not null,
-    Situacao varchar(10) not null,
+	Aluno integer(5) not null,
+    Disciplina integer(5) not null,
+    Status integer(5),
     DataMatricula date,
     constraint foreign key(Aluno) references aluno(MatrAluno),
     constraint foreign key(Curso) references curso(CodCurso)

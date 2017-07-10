@@ -14,6 +14,8 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/requisicao.js"></script>
+
+
 </head>
 
 <body>
@@ -47,6 +49,9 @@
 					<div class="conteudo">
 						<hr />
 						<a href="#" onclick="teste()">teste</a>
+						<a href="#" onclick="carregarLista()">busca aluno</a>
+						<input type="button" value="Novo teste" id="btn" />
+						
 
 						<div class="panel panel-default"
 							style="width: 100%; margin: auto;">
@@ -131,12 +136,11 @@
 								</div>
 
 								<div class="button-add col-lg-1">
-									<button style="padding: 5px; margin-top: 180px;"
-										class="col-lg-8 btn btn-primary" type="button">
-										<span class="glyphicon glyphicon-arrow-right"
-											data-unicode="e092"></span>
+									<button onclick="registrarMatricula()" style="padding: 5px; margin-top: 180px;"
+									class="col-lg-8 btn btn-primary" type="button">
+									<span class="glyphicon glyphicon-arrow-right"
+										data-unicode="e092"></span>
 									</button>
-
 								</div>
 
 								<div class="select-curso col-lg-6 borda"
@@ -146,41 +150,29 @@
 									
 										<label for="curso">Selecionar Disciplina</label> 
 										
-										<select class="form-control" name="curso" id="curso">
-											<option value="">Selecione após selecionar aluno</option>
+										<select class="form-control" name="curso" id="disciplina" onchange="pesquisarPorDisciplina()">
+											<option value="Teste1">Selecione após selecionar aluno</option>
 											<c:forEach var="disciplina" items="${disciplinas}">
-												<option value="">${disciplina.nome}</option>
+												<option value="${disciplina.codigo}">${disciplina.nome}</option>
 											</c:forEach>
 										</select>
 										
 									</div>
 
 									<label for="curso">Alunos matriculados</label> 
-
+									<input type="button" value="Atualizar Lista" onclick="listarAlunos()"/>
+									<input type="button" value="Disciplina" onclick="pegarDisciplina()" />
 
 									<div class="table-responsive borda">
-										<table class="table table-hover" style="padding: 0px;">
-											<tr>
-												<th style="padding: 0px;">Matr</th>
-												<th style="padding: 0px;">Nome</th>
-											</tr>
-											<tr style="padding: 0px;">
-												<td style="padding: 0px;" id="matricula">001</td>
-												<td style="padding: 0px;" id="nome">Caio Benício Lorenzo Castro</td>
-											</tr>
-											<tr>
-												<td style="padding: 0px;">002</td>
-												<td style="padding: 0px;">Carlos Eduardo Alexandre
-													Miguel Pinto</td>
-											</tr>
+										<table id="lista" class="table table-hover" style="padding: 0px;">										
+											<tr style="padding: 0px;"></tr>											
 										</table>
+										
+										<div id="teste"></div>
 									</div>
 									<!-- Tabela Responsiva -->
 									<br />
-
 								</div>
-
-
 								<!-- termina aqui -->
 							</div>
 							<!-- Fim do panel-body -->
@@ -205,5 +197,6 @@
 			<!-- div container -->
 		</div>
 		<!-- div wrapper -->
+
 </body>
 </html>
