@@ -132,17 +132,17 @@
 							<!-- BOTÃO PARA CADASTRAR ALUNO PARA A MATRICULA ESCOLHIDA -->
 							<div class="col-lg-1 col-md-2 col-sm-3 hidden-xs" style="margin-top: 15px">
 								<div class="adicionar-disciplina">
-									<a href="#">
-										<img src="img/seta.png" onclick="registrarMatricula()">
-									</a>
+									
+									<img src="img/seta.png" onclick="registrarMatricula()">
+									
 								</div>
 							</div>
 
 							<div class="hidden-lg hidden-md hidden-sm col-xs-12" style="margin-top: 15px">
 								<div class="adicionar-disciplina-mobile">
-									<a href="#">
-										<img src="img/seta.png">
-									</a>
+									
+									<img src="img/seta.png" onclick="teste2()">
+								
 								</div>
 							</div>
 							<!-- FIM BOTÃO PARA CADASTRAR ALUNO PARA A MATRICULA ESCOLHIDA -->
@@ -163,8 +163,7 @@
 									</div>
 
 									<label for="curso">Alunos matriculados</label> 
-									<input type="button" value="Atualizar Lista" onclick="listarAlunos()"/>
-									<input type="button" value="Disciplina" onclick="pegarDisciplina()" />
+									<input type="button" value="Listar todos" onclick="listarAlunos()"/>
 
 									<div class="table-responsive borda">
 										<table id="lista" class="table table-hover" style="padding: 0px;">										
@@ -201,6 +200,7 @@
 
 		</div>
 		<!-- div container -->
+	</div>
 	</div>
 	<!-- div wrapper -->
 </body>

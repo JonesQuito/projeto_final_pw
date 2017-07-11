@@ -1,25 +1,5 @@
 $(document).ready(function(){
-	$.ajax({
-		type: 'GET',
-		dataType: 'json',
-		url: 'http://localhost:9090/PROJETO-DE-PW/api/aluno/list',
-		cache: false,
-		success: function(data){
-								  				
-			$("#lista").append('<tr><th>Matrícula</th><th>Nome</th></tr>');
-			
-			for(i=0; i<data.length; i++){
-				$("#lista").append('<tr> <td style="padding: 0px;">'+data[i].matricula
-				+'</td> <td style="padding: 0px;">'+data[i].nome+'</td> </tr>');
-			
-			}
-			$("#mat").attr("width") = 80;
-			
-		},
-		error: function(erro){
-			alert(erro);
-		}
-	});
+	listarAlunos();
 });
 
 function teste() {
@@ -41,14 +21,14 @@ function listarAlunos(){
 			$("#lista").append('<tr style="padding: 0px;"></tr>');	
 		
 			$("#lista").append('</table>');	
-			$("#lista").append('<tr><th>Matrícula</th><th>Nome</th></tr>');
+			$("#lista").append('<tr><th>Ordem</th><th>Matrícula</th><th>Nome</th></tr>');
 			
 			for(i=0; i<data.length; i++){
-				$("#lista").append('<tr> <td style="padding: 0px;">'+data[i].matricula
-				+'</td> <td style="padding: 0px;">'+data[i].nome+'</td> </tr>');
+				$("#lista").append('<tr> <td style="padding: 0px;">'+(i +1)+'</td>'+
+									'<td style="padding: 0px;">'+data[i].matricula +'</td>'+
+									'<td style="padding: 0px;">'+data[i].nome+'</td> </td> </tr>');
 			
 			}
-			
 		},
 		error: function(erro){
 			alert("Não foi possívle obter a lista de alunos");
@@ -81,9 +61,14 @@ function registrarMatricula(){
 			alert("Não foi possível registrar a matrícula!!");
 		}
 	});
+	$("#cadastrarMatricula").val('');
+	$("#cadastrarNome").val('');
+	$("#cadastrarNascimento").val('');
+	$("#cadastrarMae").val('');
+	$("#cadastrarCPF").val('');
 }
 
-/*PESQUISAR POR DISCIPLINA*/
+/*PESQUISAR POR DISCIPLINA - RETORNA UMA LISTA DE ALUNOS MATRICULADOS EM UMA DISCIPLINA*/
 function pesquisarPorDisciplina(){
 	var codDisciplina = $("#disciplina option:selected").val();
 	
@@ -97,11 +82,14 @@ function pesquisarPorDisciplina(){
 			$("#lista").append('<tr style="padding: 0px;"></tr>');	
 		
 			$("#lista").append('</table>');	
-			$("#lista").append('<tr><th>Matrícula</th><th>Nome</th></tr>');
+			$("#lista").append('<tr><th>Ordem</th><th>Matrícula</th><th>Nome</th></tr>');
 			
 			for(i=0; i<data.length; i++){
-				$("#lista").append('<tr> <td style="padding: 0px;">'+data[i].matricula
-				+'</td> <td style="padding: 0px;">'+data[i].nome+'</td> </tr>');
+				/*$("#lista").append('<tr> <td style="padding: 0px;">'+data[i].matricula
+				+'</td> <td style="padding: 0px;">'+data[i].nome+'</td> </tr>');*/
+				$("#lista").append('<tr> <td style="padding: 0px;">'+(i +1)+'</td>'+
+						'<td style="padding: 0px;">'+data[i].matricula +'</td>'+
+						'<td style="padding: 0px;">'+data[i].nome+'</td> </td> </tr>');
 			
 			}
 			
@@ -112,8 +100,8 @@ function pesquisarPorDisciplina(){
 	});
 	
 }
-//var itemSelecionado = $("#QtdAdomodacaoDuplo option:selected");
 
+/*
 $(function($){
   	$("#btn").click(function(){
   		$.ajax({
@@ -126,7 +114,7 @@ $(function($){
   				$("#lista").append('<tr><th>Matrícula</th><th>Nome</th></tr>');
   				
   				for(i=0; i<data.length; i++){
-  					$("#lista").append('<tr> <td>'+data[i].matricula+'</td> <td>'+data[i].nome+'</td> </tr>');
+  					$("#lista").append('<tr> <td>'+data[i].matricula+'</td> <td>'+data[i].nome+'</td> <td>'+data[i].nomeMae+'</td> </tr>');
   				}
   				$("#mat").attr("width") = 80;	
   			},
@@ -137,7 +125,7 @@ $(function($){
   	});
 
   });
-
+*/
 
 /* NÃO ESTÁ EM USO*/
 function teste(){
@@ -152,26 +140,12 @@ function teste(){
 }
 
 
-/* NÃO ESTÁ EM USO*/
-$(document).ready(function(){
-	$.ajax({
-		type: 'GET',
-		dataType: 'json',
-		url: 'http://localhost:9090/PROJETO-DE-PW/api/disciplina/list',
-		cache: false,
-		success: function(data){
-			for(i=0; i < data.length; i++){
-				$("#lista").append('<tr> <td>'+
-					data[i].codigo+'</td> <td>'+
-					data[i].nome+'</td> <td>'+
-					data[i].cargaHoraria+'</td> <td class="editar-link">'+
-					'<a href="disciplina_editar.jsp"><span class="glyphicon glyphicon-pencil"></span> Editar</a></td> </tr>');
-				
-			}
-		},
-	});
 
-});
+function teste2(){
+	var codDisciplina = $("#disciplina option:selected").val();
+	var codAluno = $("#cadastrarMatricula").val();
+	alert(codDisciplina + "  -  " + codAluno);
+}
 
 
 

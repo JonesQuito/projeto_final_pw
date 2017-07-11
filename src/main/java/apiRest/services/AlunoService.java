@@ -50,7 +50,7 @@ public class AlunoService {
 		} catch (SQLException e) {
 			System.out.println("Erro na consulta de alunos: " + e.getMessage());
 		}
-
+		
 		return g.toJson(alunos);
 	}
 	
@@ -62,7 +62,7 @@ public class AlunoService {
 	@GET
 	@Path("countForDiscipline/{codDisciplina}")
 	@Produces("application/json")
-	public String getCountForDiscipline(@PathParam("codDisciplina") int codDisciplina){
+	public int getCountForDiscipline(@PathParam("codDisciplina") int codDisciplina){
 		int total = 0;
 		Connection connection = new ConnectionFactory().getConnection();
 		AlunoDao dao = new AlunoDao(connection);
@@ -72,9 +72,7 @@ public class AlunoService {
 			System.out.println("Erro na contagem de alunos: " + e.getMessage());
 		}
 
-		Gson g = new Gson();
-		
-		return g.toJson(total);
+		return total;
 	}
 
 	// MÉTODO DE TESTE QUE RETORNA O PRIMEIRO ALUNO DA LISTA DE ALUNOS
