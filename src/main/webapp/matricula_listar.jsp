@@ -44,7 +44,6 @@
 						<%@include file="includes/confirmar_excluir.jsp"%>
 						<!--############# MODAL CONFIRMAÇÃO DE EXCLUSÃO #############-->
 						
-						<a href="aluno_grafico.jsp">TESTE GRAFICO</a>
 
 						<div class="panel panel-default">
 							<div class="panel-heading"> 

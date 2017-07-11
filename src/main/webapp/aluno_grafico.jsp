@@ -96,15 +96,15 @@
 							</div>
 							<div class="panel-body">
 								
-								<a href="#"><div id="g1" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div></a>
-								<div id="g2" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
-								<div id="g3" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
-								<div id="g4" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
-								<div id="g5" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
-								<div id="g6" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
-								<div id="g7" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
-								<div id="g8" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
-								<div id="g9" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
+								<a href="#"><div id="g1" class="col-lg-2 col-md-6 col-sm-8 col-xs-12"></div></a>
+								<div id="g2" class="col-lg-2 col-md-6 col-sm-8 col-xs-12"></div>
+								<div id="g3" class="col-lg-2 col-md-6 col-sm-8 col-xs-12"></div>
+								<div id="g4" class="col-lg-2 col-md-6 col-sm-8 col-xs-12"></div>
+								<div id="g5" class="col-lg-2 col-md-6 col-sm-8 col-xs-12"></div>
+								<div id="g6" class="col-lg-2 col-md-6 col-sm-8 col-xs-12"></div>
+								<div id="g7" class="col-lg-2 col-md-6 col-sm-8 col-xs-12"></div>
+								<div id="g8" class="col-lg-2 col-md-6 col-sm-8 col-xs-12"></div>
+								<div id="g9" class="col-lg-2 col-md-6 col-sm-8 col-xs-12"></div>
 								
 								<script src="js/grafico/raphael-2.1.4.min.js"></script>
 								<script src="js/grafico/justgage.js"></script>
