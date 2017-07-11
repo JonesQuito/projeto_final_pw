@@ -76,7 +76,7 @@
 								</div>
 							</div>
 							<div class="panel-body">
-								<button onclick="totalAlunosDisciplina(11)" >Teste</button>
+								
 								<div id="g1" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
 								<div id="g2" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
 								<div id="g3" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
@@ -91,7 +91,7 @@
 								<script src="js/grafico/justgage.js"></script>
 								<script>
 									var g1, g2, g3, g4, g5, g5, g6, g7, g8, g9;
-									alert(totalAlunosDisciplina(12));
+							
 									document.addEventListener("DOMContentLoaded", function(event) {
 										g1 = new JustGage({
 											id: "g1",
@@ -104,7 +104,7 @@
 										
 										g2 = new JustGage({
 											id: "g2",
-											value: 5,
+											value: 30,
 											min: 0,
 											max: 40,
 											title: "Matemática",

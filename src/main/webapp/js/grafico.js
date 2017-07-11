@@ -4,15 +4,17 @@
 function totalAlunosDisciplina(codDisciplina){
 	$.ajax({
 		type: 'GET',
-		url: 'http://localhost:9090/PROJETO-DE-PW/api/aluno/countForDiscipline/'+codDisciplina,
+		dataType: 'json',
+		url: 'http://localhost:9090/PROJETO-DE-PW/api/aluno/listForDiscipline?codDisciplina=11',
 		cache: false,
-		success: function(total){
-			var number = parseInt(total);
-			return number;
+		success: function(data){
+			alert(data.length);
+			return data.length;
 		}
 	});
 }
 
-function teste(){
-	alert("dfsfffdfkd");
+function teste(cod){
+	//alert(parseInt(totalAlunosDisciplina(cod)));
+	return parseInt(totalAlunosDisciplina(cod));
 }
