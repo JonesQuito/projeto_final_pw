@@ -7,6 +7,26 @@
 	<%@include file="includes/head.jsp"%>
 	
 	<script type="text/javascript" src="js/grafico.js"></script>
+	<script type="text/javascript" src="js/requisicao_disciplina.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//var valor = $("#g2").attr('value', 40);
+			//alert(g2.value);
+			//$("#"+idElemento).attr('value', count);
+			
+			
+			/*
+			g2 = new JustGage({
+				id: "g2",
+				value: 30,
+				min: 0,
+				max: 40,
+				title: "Matemática",
+				label: "Alunos"
+			});
+			*/
+		});
+	</script>
 
 	<style>
 		body {
@@ -27,14 +47,13 @@
 		}
 	</style>
 
-
-
-
 </head>
 
-<body>
+<body >
 	<div class="wrapper" role="main">
-
+<script type="text/javascript">
+	//alert(totalAlunos(9, 5));
+</script>
 		<div class="container-fluid">
 
 			<!--############# Linha Cabeçalho #############-->
@@ -95,7 +114,7 @@
 									document.addEventListener("DOMContentLoaded", function(event) {
 										g1 = new JustGage({
 											id: "g1",
-											value: getRandomInt(0, 40),
+											value: totalAlunos(12),
 											min: 0,
 											max: 40,
 											title: "Língua Portuguesa",
@@ -104,88 +123,63 @@
 										
 										g2 = new JustGage({
 											id: "g2",
-											value: 30,
+											value: totalAlunos(10),
 											min: 0,
 											max: 40,
-											title: "Matemática",
+											title: "Matemática I",
 											label: "Alunos"
 										});
 
 										g3 = new JustGage({
 											id: "g3",
-											value: getRandomInt(0, 40),
+											value: totalAlunos(11),
 											min: 0,
 											max: 40,
-											title: "Biologia",
+											title: "Matemática II",
 											label: "Alunos"
 										});
 
 										g4 = new JustGage({
 											id: "g4",
-											value: getRandomInt(0, 40),
+											value: totalAlunos(13),
 											min: 0,
 											max: 40,
-											title: "Física",
+											title: "Álgebra",
 											label: "Alunos"
 										});
 
 										g5 = new JustGage({
 											id: "g5",
-											value: getRandomInt(0, 40),
-											min: 0,
-											max: 40,
-											title: "Química",
-											label: "Alunos"
-										});
-
-										g6 = new JustGage({
-											id: "g6",
-											value: getRandomInt(0, 40),
-											min: 0,
-											max: 40,
-											title: "Geografia",
-											label: "Alunos"
-										});
-
-										g7 = new JustGage({
-											id: "g7",
-											value: getRandomInt(0, 40),
-											min: 0,
-											max: 40,
-											title: "História",
-											label: "Alunos"
-										});
-
-										g8 = new JustGage({
-											id: "g8",
-											value: getRandomInt(0, 40),
+											value: totalAlunos(14),
 											min: 0,
 											max: 40,
 											title: "Inglês",
 											label: "Alunos"
 										});
 
-										g9 = new JustGage({
-											id: "g9",
-											value: getRandomInt(0, 40),
+										g6 = new JustGage({
+											id: "g6",
+											value: totalAlunos(9),
 											min: 0,
 											max: 40,
-											title: "Artes",
+											title: "História",
 											label: "Alunos"
 										});
 
+
 										setInterval(function() {
-											g1.refresh(getRandomInt(0, 40));
+											//g1.refresh(getRandomInt(0, 40));
 											//g2.refresh(getRandomInt(0, 40));
-											g3.refresh(getRandomInt(0, 40));
-											g4.refresh(getRandomInt(0, 40));
-											g5.refresh(getRandomInt(0, 40));
-											g6.refresh(getRandomInt(0, 40));
-											g7.refresh(getRandomInt(0, 40));
-											g8.refresh(getRandomInt(0, 40));
-											g9.refresh(getRandomInt(0, 40));
+											//g3.refresh(getRandomInt(0, 40));
+											//g4.refresh(getRandomInt(0, 40));
+											//g5.refresh(getRandomInt(0, 40));
+											//g6.refresh(getRandomInt(0, 40));
+											//g7.refresh(getRandomInt(0, 40));
+											//g8.refresh(getRandomInt(0, 40));
+											//g9.refresh(getRandomInt(0, 40));
 										}, 2500);
 									});
+									
 								</script>
 
 
@@ -214,7 +208,6 @@
 	<!-- div container -->
 </div>
 <!-- div wrapper -->
-
 
 </body>
 </html>
