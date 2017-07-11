@@ -17,10 +17,10 @@
         	<a style=" padding: 7px;" class="col-lg-2 col-md-3 col-sm-7 col-xs-12 btn btn-default btn-lg btn btn-primary"
         	href="aluno_grafico.jsp" role="button"><span class="glyphicon glyphicon-list"></span> Ver Gráfico</a>
         	
-        	<form action="servletaluno?logica=AlunoPesquisar" method="post" style=" margin-top: -12px;">
+        	<form action="servletmatricula?logica=MatriculaPesquisar" method="post" style=" margin-top: -12px;">
 				<div class="form-group">
 					<div class="col-lg-4 col-md-8 col-sm-8 col-xs-8">
-						<input type="text" class="form-control" id="pesquisar" name="nome" placeholder="Informe um nome ou matrícula a ser pesquisado">
+						<input type="text" class="form-control" id="pesquisar" name="parametro" placeholder="Informe um nome ou matrícula a ser pesquisado">
 					</div>
 				</div>
 				<button type="submit" style="font-size: 13pt; font-weight: 700; padding: 4px; width: 5%;"

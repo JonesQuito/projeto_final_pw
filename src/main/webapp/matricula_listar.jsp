@@ -68,14 +68,14 @@
 												<c:forEach var="matricula" items="${matriculas}" varStatus="contador">
 												<tr bgcolor="#${contador.count %2 == 0? 'fcfcfc': 'ffffff' }">
 
-													<td>${matricula.codAluno}</td>
-													<td>${matricula.codDisciplina}</td>
+													<td>${matricula.nomeAluno}</td>
+													<td>${matricula.nomeDisciplina}</td>
 													<td>${matricula.status}</td>
 													<td><fmt:formatDate value="${matricula.dataMatricula.time}" pattern="dd/MM/yyyy"/></td>
 
 													<td class="editar-link" alt="Editar"><a href="servletaluno?logica=AlunoEditar&operacao=buscar&matricula=${aluno.matricula}">
 													</a></td>
-													<td class="excluir-link"><a href="servletaluno?logica=AlunoExcluir&matricula=${aluno.matricula}">
+													<td class="excluir-link"><a href="servletaluno?logica=AlunoExcluir&matricula">
 													</a></td>
 												</tr>
 											</c:forEach>

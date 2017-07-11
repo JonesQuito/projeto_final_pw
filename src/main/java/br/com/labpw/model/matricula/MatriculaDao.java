@@ -31,15 +31,18 @@ public class MatriculaDao {
 		pst.execute();
 	}
 	
-	public List<Matricula> listar() throws SQLException{
-		List<Matricula> matriculas = new ArrayList<Matricula>();
-		String sql = "select * from matricula";
+	public List<Matricula2> listar() throws SQLException{
+		List<Matricula2> matriculas = new ArrayList<Matricula2>();
+		String sql;
+		sql = "select aluno.Nome, disciplina.Nome, matricula.Status, matricula.DataMatricula from aluno inner join matricula on (matricula.Aluno = aluno.MatrAluno) inner join disciplina on(disciplina.CodDisciplina= matricula.Disciplina)";
+		
 		PreparedStatement stmt = this.connection.prepareStatement(sql);
+		
 		ResultSet rs = stmt.executeQuery();
 		while(rs.next()){
-			Matricula matricula = new Matricula();
-			matricula.setCodAluno(rs.getInt(1));
-			matricula.setCodDisciplina(rs.getInt(2));
+			Matricula2 matricula = new Matricula2();
+			matricula.setNomeAluno(rs.getString(1));
+			matricula.setNomeDisciplina(rs.getString(2));
 			matricula.setStatus(rs.getInt(3));
 			
 			//Converte data de matrícula
@@ -53,4 +56,28 @@ public class MatriculaDao {
 		return matriculas;
 	}
 
+	public List<Matricula2> listarComParametro(String parametro) throws SQLException{
+		List<Matricula2> matriculas = new ArrayList<Matricula2>();
+		String sql;
+		sql = "select aluno.Nome, disciplina.Nome, matricula.Status, matricula.DataMatricula from aluno inner join matricula on (matricula.Aluno = aluno.MatrAluno) inner join disciplina on(disciplina.CodDisciplina= matricula.Disciplina and disciplina.Nome like ? '%')";
+		
+		PreparedStatement stmt = this.connection.prepareStatement(sql);
+		stmt.setString(1, parametro);
+		ResultSet rs = stmt.executeQuery();
+		while(rs.next()){
+			Matricula2 matricula = new Matricula2();
+			matricula.setNomeAluno(rs.getString(1));
+			matricula.setNomeDisciplina(rs.getString(2));
+			matricula.setStatus(rs.getInt(3));
+			
+			//Converte data de matrícula
+			Calendar dataMatricula = Calendar.getInstance();
+			dataMatricula.setTime(rs.getDate(4));
+			
+			matricula.setDataMatricula(dataMatricula);
+			
+			matriculas.add(matricula);
+		}
+		return matriculas;
+	}
 }
