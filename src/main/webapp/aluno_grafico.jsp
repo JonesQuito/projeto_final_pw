@@ -78,7 +78,7 @@
 					<!--############# FIM TÍTULO PÁGINA #############-->
 					
 					<!--############# FAIXA DE OPÇÕES #############-->
-					<%@include file="includes/aluno/aluno_faixa_opcoes.jsp"%>
+					<%@include file="includes/matricula/matricula_faixa_opcoes.jsp"%>
 					<!--############# FAIXA DE OPÇÕES #############-->
 
 					<!-- Div Conteudo -->
@@ -91,12 +91,12 @@
 						<div class="panel panel-default">
 							<div class="panel-heading"> 
 								<div class="panel-heading titulo-painel">
-									<h2><center>Lista de alunos</center></h2>
+									<h2><center>Alunos por Disciplina</center></h2>
 								</div>
 							</div>
 							<div class="panel-body">
 								
-								<div id="g1" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
+								<a href="#"><div id="g1" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div></a>
 								<div id="g2" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
 								<div id="g3" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>
 								<div id="g4" class="col-lg-2 col-md-5 col-sm-8 col-xs-12"></div>

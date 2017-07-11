@@ -56,7 +56,7 @@
 				<!-- PROFESSORES -->
 
 				<!-- DISCIPLINA -->
-				<li><a href="disciplinas.jsp"> <!-- Esse menu so parece para celular -->
+				<li><a href="disciplina_listar.jsp"> <!-- Esse menu so parece para celular -->
 					<div class="figure_32 hidden-lg hidden-md hidden-sm">
 						<img src="img/icones_menu_32/disciplina_32px.png"
 						alt="Menu Botão Disciplina"> <span>disciplina</span>
@@ -68,6 +68,20 @@
 					</figure>
 				</a></li>
 				<!-- DISCIPLINA -->
+				
+				<!-- MATRICULAS -->
+				<li><a href="servletmatricula?logica=MatriculaPesquisar"> <!-- Esse menu so parece para celular -->
+					<div class="figure_32 hidden-lg hidden-md hidden-sm">
+						<img src="img/icones_menu_32/disciplina_32px.png"
+						alt="Menu Botão Disciplina"> <span>matricula</span>
+					</div> <!-- Esse menu so parece para tablet, notebook e desktop -->
+					<figure class="figure_115 hidden-xs">
+						<img src="img/icones_menu/disciplina.jpg"
+						alt="Menu Botão Disciplina">
+						<figcaption>matricula</figcaption>
+					</figure>
+				</a></li>
+				<!-- MATRICULAS -->
 		</ul>
 	</div>
 	<!-- nav-collapse -->
