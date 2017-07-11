@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
@@ -35,24 +36,43 @@ public class AlunoService {
 
 		return g.toJson(alunos);
 	}
-	
-	// MÉTODO QUE RETORNA A LISTA DE ALUNOS MTICULADOS EM UMA DISCIPLINA
-		@GET
-		@Path("listForDiscipline")
-		@Produces("application/json")
-		public String getListForDiscipline(@QueryParam("codDisciplina") int codDisciplina) {
-			Connection connection = new ConnectionFactory().getConnection();
-			List<Aluno> alunos = new ArrayList<Aluno>();
-			Gson g = new Gson();
-			try {
-				alunos = new AlunoDao(connection).getListaPorDisciplina(codDisciplina);
-			} catch (SQLException e) {
-				System.out.println("Erro na consulta de alunos: " + e.getMessage());
-			}
 
-			return g.toJson(alunos);
+	// MÉTODO QUE RETORNA A LISTA DE ALUNOS MATICULADOS EM UMA DISCIPLINA
+	@GET
+	@Path("listForDiscipline")
+	@Produces("application/json")
+	public String getListForDiscipline(@QueryParam("codDisciplina") int codDisciplina) {
+		Connection connection = new ConnectionFactory().getConnection();
+		List<Aluno> alunos = new ArrayList<Aluno>();
+		Gson g = new Gson();
+		try {
+			alunos = new AlunoDao(connection).getListaPorDisciplina(codDisciplina);
+		} catch (SQLException e) {
+			System.out.println("Erro na consulta de alunos: " + e.getMessage());
 		}
+
+		return g.toJson(alunos);
+	}
 	
+	/**
+	 * Fornece serviço de contagem de alunos matriculados em uma disciplina específica
+	 * @param codDisciplina
+	 * @return total de alunos matriculados na disciplina informada no parâmetro de entrada.
+	 */
+	@GET
+	@Path("countForDiscipline/{codDisciplina}")
+	public int getCountForDiscipline(@PathParam("codDisciplina") int codDisciplina){
+		int total = 0;
+		Connection connection = new ConnectionFactory().getConnection();
+		AlunoDao dao = new AlunoDao(connection);
+		try {
+			total = dao.getListaPorDisciplina(codDisciplina).size();
+		} catch (SQLException e) {
+			System.out.println("Erro na contagem de alunos: " + e.getMessage());
+		}
+		
+		return total;
+	}
 
 	// MÉTODO DE TESTE QUE RETORNA O PRIMEIRO ALUNO DA LISTA DE ALUNOS
 	@GET
@@ -66,11 +86,12 @@ public class AlunoService {
 		return g.toJson(al);
 	}
 
-	// MÉTODO QUE RECEBE O CODIGO DE UMA DISCIPLINA E O CÓDIGO DE UM ALUNO E REGISTRA A MATRÍCULA
+	// MÉTODO QUE RECEBE O CODIGO DE UMA DISCIPLINA E O CÓDIGO DE UM ALUNO E
+	// REGISTRA A MATRÍCULA
 	@GET
 	@Path("matricula")
 	@Produces("application/json")
-	public String matriculaAluno(@QueryParam("codAluno") int codAluno, @QueryParam("codDisciplina") int codDisciplina){
+	public String matriculaAluno(@QueryParam("codAluno") int codAluno, @QueryParam("codDisciplina") int codDisciplina) {
 		// Obtém a data atual e seta em uma instância de Calendar
 		Date dataAtual = new Date(System.currentTimeMillis());
 		Calendar dataMatricula = Calendar.getInstance();
@@ -90,16 +111,15 @@ public class AlunoService {
 		// matrícula
 		MatriculaDao dao = new MatriculaDao(connection);
 		try {
-			
+
 			dao.registrar(matricula);
 
 		} catch (SQLException e) {
 			System.out.println("Erro no registrar() do Dao de disciplina");
 		}
-		
+
 		Gson g = new Gson();
 		return g.toJson(matricula);
 	}
 
-	
 }

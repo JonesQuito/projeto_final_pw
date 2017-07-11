@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.labpw.model.Disciplina;
+import apiRest.modelo.disciplina.Disciplina;;
+
+//import br.com.labpw.model.Disciplina;
 
 public class DisciplinaDao {
 
@@ -41,18 +43,16 @@ public class DisciplinaDao {
 		
 		if (rs.next()){
 			
-			disciplina = new Disciplina();
-			
+			disciplina = new Disciplina();			
 			//Seta os valores dentro do obejeto.
 			disciplina.setCodigo(rs.getInt("codigo"));
 			disciplina.setNome(rs.getString("nome"));
 			disciplina.setDescricao(rs.getString("descricao"));
 			disciplina.setCargaHoraria(rs.getInt("cargaHoraria"));
 		}
-
 		return disciplina;
-		
 	}
+	
 	
 	
 	public void alterar(int codigo) throws SQLException {}

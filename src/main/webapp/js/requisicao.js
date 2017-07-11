@@ -114,6 +114,65 @@ function pesquisarPorDisciplina(){
 }
 //var itemSelecionado = $("#QtdAdomodacaoDuplo option:selected");
 
+$(function($){
+  	$("#btn").click(function(){
+  		$.ajax({
+  			type: 'GET',
+  			dataType: 'json',
+  			url: 'http://localhost:9091/api-gestor-escolar/api/aluno/list',
+  			cache: false,
+  			success: function(data){
+  					  				
+  				$("#lista").append('<tr><th>Matrícula</th><th>Nome</th></tr>');
+  				
+  				for(i=0; i<data.length; i++){
+  					$("#lista").append('<tr> <td>'+data[i].matricula+'</td> <td>'+data[i].nome+'</td> </tr>');
+  				}
+  				$("#mat").attr("width") = 80;	
+  			},
+  			error: function(erro){
+  				alert(erro);
+  			}
+  		});
+  	});
+
+  });
+
+
+/* NÃO ESTÁ EM USO*/
+function teste(){
+	var atributo = $("#teste").width(); // Retorna o valor máximo da propriedade
+	var valorUnidade = (atributo / 100); // Retorna o valor equivalente a 1% do máximo da propriedade width
+	//FORMULA PARA CALCULAR A PERCENTAGEM DE ALUNOS MATRICULADOS NA DISCIPLINA
+	var alunosMatriculados = 35; // total de alunos matriculados
+	var maxAlunoPorDisciplina = 40;  //Maximo de alunos que podem ser matriculados em uma disciplina = 40 (100%)
+	var porcentMatricula = (alunosMatriculados * 100) / maxAlunoPorDisciplina;
+	$("#mat").width(valorUnidade * porcentMatricula);
+	alert("Vagas preenchidas: " + porcentMatricula + " %");
+}
+
+
+/* NÃO ESTÁ EM USO*/
+$(document).ready(function(){
+	$.ajax({
+		type: 'GET',
+		dataType: 'json',
+		url: 'http://localhost:9090/PROJETO-DE-PW/api/disciplina/list',
+		cache: false,
+		success: function(data){
+			for(i=0; i < data.length; i++){
+				$("#lista").append('<tr> <td>'+
+					data[i].codigo+'</td> <td>'+
+					data[i].nome+'</td> <td>'+
+					data[i].cargaHoraria+'</td> <td class="editar-link">'+
+					'<a href="disciplina_editar.jsp"><span class="glyphicon glyphicon-pencil"></span> Editar</a></td> </tr>');
+				
+			}
+		},
+	});
+
+});
+
 
 
 

@@ -3,9 +3,50 @@
 <html lang="pt-br">
 <head>
     <%@include file="includes/head.jsp"%>
+    
+<script type="text/javascript">
+var valor = {"valor:"};
+
+	
+	function listarDisciplinas(){
+		$.ajax({
+			type: 'GET',
+			dataType: 'json',
+			url: 'http://localhost:9090/PROJETO-DE-PW/api/disciplina/list',
+			cache: false,
+			success: function(data){
+				for(i=0; i < data.length; i++){
+					
+					$("#lista").append('<tr> <td>'+
+							data[i].codigo+'</td> <td>'+
+							data[i].nome+'</td> <td>'+
+							data[i].cargaHoraria+
+							'<td><progress id="'+i+'" max="40" value=""></progress> 20 / 40</td>'+
+							'</td> <td class="editar-link"> '+
+							'<a href="disciplina_editar.jsp"><span class="glyphicon glyphicon-pencil"></span> Editar</a></td> </tr>');
+
+				}
+			},
+		});
+		alert(totalAlunos(12));
+	}
+	
+	/*BUSCA O NÚMERO DE ALUNOS POR DISCIPLINA*/
+	function totalAlunos(disciplina){
+		$.ajax({
+			type: 'GET',
+			url: 'http://localhost:9090/PROJETO-DE-PW/api/aluno/countForDiscipline/'+disciplina,
+			cache: false,
+			success: function(count){
+				return 10;
+				
+			},
+		});
+	}
+</script>
 </head>
 
-<body>
+<body onload="listarDisciplinas()">
 
     <div class="wrapper" role="main">
 
@@ -51,49 +92,17 @@
                         <div class="panel-body">
 
                             <div class="table-responsive">
-                                <table class="table table-houve">
-                                <center><h6 class="hidden-lg hidden-md hidden-sm">[Role a tabela lateralmente se necessário]<h6></center>
+                            	<h6 class="hidden-lg hidden-md hidden-sm">[Role a tabela lateralmente se necessário]</h6>
+                                <table class="table table-houve" id="lista">
+
                                     <tr>
                                         <th>Código</th>
                                         <th>Nome</th>
                                         <th>Duração</th>
+                                        <th>Vagas</th>
                                         <th colspan="2">Ações</th>
                                     </tr>
-                                    <tr>
-                                        <td>10</td>
-                                        <td>Língua Portuguesa</td>
-                                        <td>96</td>
-                                        <td class="editar-link"><a href="disciplina_editar.jsp"><span class="glyphicon glyphicon-pencil"></span> Editar</a></td>
-                                        <td class="excluir-link"><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove"></span> Excluir</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>20</td>
-                                        <td>Matemática</td>
-                                        <td>96</td>
-                                        <td class="editar-link"><a href="disciplina_editar.jsp"><span class="glyphicon glyphicon-pencil"></span> Editar</a></td>
-                                        <td class="excluir-link"><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove"></span> Excluir</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>30</td>
-                                        <td>Geografia Política</td>
-                                        <td>60</td>
-                                        <td class="editar-link"><a href="disciplina_editar.jsp"><span class="glyphicon glyphicon-pencil"></span> Editar</a></td>
-                                        <td class="excluir-link"><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove"></span> Excluir</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>40</td>
-                                        <td>Inglês Técnico</td>
-                                        <td>60</td>
-                                        <td class="editar-link"><a href="disciplina_editar.jsp"><span class="glyphicon glyphicon-pencil"></span> Editar</a></td>
-                                        <td class="excluir-link"><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove"></span> Excluir</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>50</td>
-                                        <td>Algorítimos</td>
-                                        <td>100</td>
-                                        <td class="editar-link"><a href="disciplina_editar.jsp"><span class="glyphicon glyphicon-pencil"></span> Editar</a></td>
-                                        <td class="excluir-link"><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove"></span> Excluir</a></td>
-                                    </tr>    
+                                                                         
                                 </table>
                             </div><!-- Tabela Responsiva -->
 

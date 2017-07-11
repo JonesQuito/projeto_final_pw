@@ -34,7 +34,7 @@
 					<!--############# FIM TÍTULO PÁGINA #############-->
 					
 					<!--############# FAIXA DE OPÇÕES #############-->
-						<%@include file="includes/aluno/aluno_faixa_opcoes.jsp"%>
+					<%@include file="includes/aluno/aluno_faixa_opcoes.jsp"%>
 					<!--############# FAIXA DE OPÇÕES #############-->
 
 					<!-- Div Conteudo -->
@@ -43,6 +43,8 @@
 						<!--############# MODAL CONFIRMAÇÃO DE EXCLUSÃO #############-->
 						<%@include file="includes/confirmar_excluir.jsp"%>
 						<!--############# MODAL CONFIRMAÇÃO DE EXCLUSÃO #############-->
+						
+						<a href="aluno_grafico.jsp">TESTE GRAFICO</a>
 
 						<div class="panel panel-default">
 							<div class="panel-heading"> 
@@ -56,55 +58,57 @@
 									
 									<table class="table table-hover">
 										<h6 class="hidden-lg hidden-md hidden-sm"> [Role a tabela lateralmente se necessário]<h6>
-										<tr>
-											<th>Matrícula</th>
-											<th>Nome</th>
-											<th>Nascimento</th>
-											<th>CPF</th>
-											<th>RG</th>
-											<th>Cidade</th>
-											<th>Bairro</th>
-											<th colspan="2">Ações</th>
+											<tr>
+												<th>Matrícula</th>
+												<th>Nome</th>
+												<th>Nascimento</th>
+												<th>CPF</th>
+												<th>RG</th>
+												<th>Cidade</th>
+												<th>Bairro</th>
+												<th colspan="2">Editar e Excluir</th>
 
-										<c:forEach var="aluno" items="${lista}" varStatus="contador">
-											<tr bgcolor="#${contador.count %2 == 0? 'eee': 'ffffff' }">
-												<td>${aluno.matricula}</td>
-												<td>${aluno.nome}</td>
-												<td><fmt:formatDate value="${aluno.dataNascimento.time}" pattern="dd/MM/yyyy"/></td>
-												<td>${aluno.cpf}</td>
-												<td>${aluno.rg}</td>
-												<td>${aluno.endereco.cidade}</td>
-												<td>${aluno.endereco.bairro}</td>
-	
-												<td class="editar-link"><a href="servletaluno?logica=AlunoEditar&operacao=buscar&matricula=${aluno.matricula}"><span class="glyphicon glyphicon-pencil"></span> Editar</a></td>
-												<td class="excluir-link"><a href="servletaluno?logica=AlunoExcluir&matricula=${aluno.matricula}"> <!-- data-toggle="modal" data-target="#myModal" --><span  class="glyphicon glyphicon-remove"></span> Excluir</a></td>
-											</tr>
-										</c:forEach>
-									</table>
-								</div><!-- Tabela Responsiva -->
+												<c:forEach var="aluno" items="${lista}" varStatus="contador">
+												<tr bgcolor="#${contador.count %2 == 0? 'fcfcfc': 'ffffff' }">
+													<td>${aluno.matricula}</td>
+													<td>${aluno.nome}</td>
+													<td><fmt:formatDate value="${aluno.dataNascimento.time}" pattern="dd/MM/yyyy"/></td>
+													<td>${aluno.cpf}</td>
+													<td>${aluno.rg}</td>
+													<td>${aluno.endereco.cidade}</td>
+													<td>${aluno.endereco.bairro}</td>
 
-							</div><!-- Painel corpo Conteudo -->
-						</div><!-- Painel -->
+													<td class="editar-link" alt="Editar"><a href="servletaluno?logica=AlunoEditar&operacao=buscar&matricula=${aluno.matricula}">
+													</a></td>
+													<td class="excluir-link"><a href="servletaluno?logica=AlunoExcluir&matricula=${aluno.matricula}">
+													</a></td>
+												</tr>
+											</c:forEach>
+										</table>
+									</div><!-- Tabela Responsiva -->
 
-						
-					</div>
-					<!-- FIM Div Conteudo -->
+								</div><!-- Painel corpo Conteudo -->
+							</div><!-- Painel -->
 
-				</div><!-- conteudo -->
-				<!-- ############# FIM do conteudo ############# -->
 
-			</div><!-- Linha principal -->
-			<!-- ############# FIM da Linha principal ############# -->
+						</div>
+						<!-- FIM Div Conteudo -->
 
-			<!-- ############# INÍCIO DO RODAPÉ ############# -->
-			<%@ include file="includes/rodape.jsp"%>
-			<!-- ############# FIM DO RODAPÉ ############# -->
+					</div><!-- conteudo -->
+					<!-- ############# FIM do conteudo ############# -->
 
+				</div><!-- Linha principal -->
+				<!-- ############# FIM da Linha principal ############# -->
+
+				<!-- ############# INÍCIO DO RODAPÉ ############# -->
+				<%@ include file="includes/rodape.jsp"%>
+				<!-- ############# FIM DO RODAPÉ ############# -->
+
+			</div>
+			<!-- div container -->
 		</div>
-		<!-- div container -->
-	</div>
-	<!-- div wrapper -->
+		<!-- div wrapper -->
 
 
-</body>
-</html>
+	</body>
+	</html>

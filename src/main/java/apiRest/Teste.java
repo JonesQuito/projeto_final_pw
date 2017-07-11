@@ -5,12 +5,16 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import apiRest.conexao.ConnectionFactory;
 import apiRest.modelo.aluno.Aluno;
+import apiRest.modelo.aluno.AlunoDao;
+import apiRest.modelo.disciplina.DisciplinaDao;
 
 
 
@@ -20,6 +24,7 @@ public class Teste {
 
 	public static void main(String[] args) throws Exception {
 
+		/*
 		Teste http = new Teste();
 		String chamadaWS;
 
@@ -34,7 +39,12 @@ public class Teste {
 
 		for(Aluno aluno : alunos){
 			System.out.println(aluno.getNome());
-		}
+		}*/
+		
+		Connection connection = new ConnectionFactory().getConnection();
+		AlunoDao dao = new AlunoDao(connection);
+		int total = dao.getListaPorDisciplina(9).size();
+		System.out.println("Matriculados na disciplina 12: " + total);
 	}
 	
 	
