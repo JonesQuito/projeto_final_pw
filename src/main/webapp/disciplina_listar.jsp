@@ -3,10 +3,8 @@
 <html lang="pt-br">
 <head>
     <%@include file="includes/head.jsp"%>
-    
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
 <script type="text/javascript">
-var valor = {"valor:"};
-
 	
 	function listarDisciplinas(){
 		$.ajax({
@@ -21,24 +19,24 @@ var valor = {"valor:"};
 							data[i].codigo+'</td> <td>'+
 							data[i].nome+'</td> <td>'+
 							data[i].cargaHoraria+
-							'<td><progress id="'+i+'" max="40" value=""></progress> 20 / 40</td>'+
+							'<td><progress id="'+i+'" max="40" value="15"></progress> 20 / 40</td>'+
 							'</td> <td class="editar-link"> '+
 							'<a href="disciplina_editar.jsp"><span class="glyphicon glyphicon-pencil"></span> Editar</a></td> </tr>');
-
+					totalAlunos(data[i].codigo, i);
 				}
 			},
 		});
-		alert(totalAlunos(12));
 	}
 	
 	/*BUSCA O NÚMERO DE ALUNOS POR DISCIPLINA*/
-	function totalAlunos(disciplina){
+	function totalAlunos(disciplina, idElemento){
 		$.ajax({
 			type: 'GET',
 			url: 'http://localhost:9090/PROJETO-DE-PW/api/aluno/countForDiscipline/'+disciplina,
 			cache: false,
 			success: function(count){
-				return 10;
+
+				$("#"+idElemento).attr('value', count);
 				
 			},
 		});
@@ -90,18 +88,20 @@ var valor = {"valor:"};
                             <h2><center>Lista de Disciplinas</center></h2>
                         </div>
                         <div class="panel-body">
-
+			<button onclick="totalAlunos(5)">Teste</button>
+			<script type="text/javascript">alert(parseInt(totalAlunos(12)))</script>
                             <div class="table-responsive">
                             	<h6 class="hidden-lg hidden-md hidden-sm">[Role a tabela lateralmente se necessário]</h6>
                                 <table class="table table-houve" id="lista">
 
                                     <tr>
-                                        <th>Código</th>
+                                        <th id="">Código</th>
                                         <th>Nome</th>
                                         <th>Duração</th>
                                         <th>Vagas</th>
                                         <th colspan="2">Ações</th>
                                     </tr>
+
                                                                          
                                 </table>
                             </div><!-- Tabela Responsiva -->
